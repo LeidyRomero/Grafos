@@ -78,7 +78,7 @@ public class ColaDePrioridadOrientadaMinimo {
         if (i < 0 || i >= maxN) throw new IllegalArgumentException();
         return qp[i] != -1;
     }
-	public void decreaseKey(int i, int vertice) {
+	public void decreaseV(int i, int vertice) {
         if (i < 0 || i >= maxN) throw new IllegalArgumentException();
         if (!contains(i)) throw new NoSuchElementException("index is not in the priority queue");
         if (vertices[i]<=vertice)
