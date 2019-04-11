@@ -5,61 +5,22 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Main {
-	public final static String PEQUENIO = "./data/distances5.txt";
-	public final static String MEDIO = "./data/distances100.txt";
-	public final static String GRANDE = "./data/distances1000.txt";
+public class primerPunto {
 
-	private static int[][] matriz;
-
-
-	public static void main(String[] args) throws IOException {
-		try {
-			//crear la matriz a partir del archivo:
-			BufferedReader bf = new BufferedReader(new FileReader(PEQUENIO));
-			String linea = bf.readLine();
-			int cont = 0;
-			int j = 0;
-			String[] datos = null;
-			matriz = null;
-
-			if(linea != null)
-			{
-				datos = linea.split("	");
-				matriz = new int[datos.length][datos.length];
-			}
-
-			while(linea != null)
-			{
-				matriz[cont][j] = Integer.parseInt(datos[j]);
-				if(j<datos.length-1) 
-				{ j++; }
-				else
-				{
-					linea = bf.readLine();
-					j = 0;
-					cont++;
-					if(linea!=null)
-						datos = linea.split("	");
-				}
-			}
-		} catch (FileNotFoundException e) {
-			System.err.println("Errores leyendo la matriz");
-		}
+	public primerPunto(int[][] matriz, int numeroVertices) throws IOException {
 		//algoritmos:
-		imprimirDijkstra();
-		imprimirBellmanFord();
-		imprimirFloyd();
-
+		imprimirDijkstra(matriz, numeroVertices);
+		imprimirBellmanFord(matriz, numeroVertices);
+		imprimirFloyd(matriz, numeroVertices);
 	}
 	/**
 	 * 
 	 */
-	public static void imprimirDijkstra()
+	public static void imprimirDijkstra(int[][] matriz, int numeroVertices)
 	{
 		//TODO calcular caminos desde todos los vertices fuente, a todos los vertices destino
 		long tiempoInicial = System.currentTimeMillis();
-		Dijkstra d = new Dijkstra(matriz, matriz[0].length, matriz[0][0]);
+		Dijkstra d = new Dijkstra(matriz, numeroVertices, matriz[0][0]);
 		long tiempoFinal = System.currentTimeMillis();
 		long tiempo  = tiempoFinal-tiempoInicial;
 		int[] camino = d.getCamino();
@@ -80,11 +41,11 @@ public class Main {
 	/**
 	 * 
 	 */
-	public static void imprimirBellmanFord()
+	public static void imprimirBellmanFord(int[][] matriz, int numeroVertices)
 	{
 		//TODO calcular caminos desde todos los vertices fuente, a todos los vertices destino
 		long tiempoInicial = System.currentTimeMillis();
-		BellmanFord bf = new BellmanFord(matriz, matriz[0].length, matriz[0][0]);
+		BellmanFord bf = new BellmanFord(matriz, numeroVertices, matriz[0][0]);
 		long tiempoFinal = System.currentTimeMillis();
 		long tiempo  = tiempoFinal-tiempoInicial;
 		int[] camino = bf.getCamino();
@@ -105,11 +66,11 @@ public class Main {
 	/**
 	 * 
 	 */
-	public static void imprimirFloyd()
+	public static void imprimirFloyd(int[][] matriz, int numeroVertices)
 	{
 		//TODO calcular caminos desde todos los vertices fuente, a todos los vertices destino
 //		long tiempoInicial = System.currentTimeMillis();
-//		FloydWarschall fw = new FloydWarshall(matriz, matriz[0].length, matriz[0][0]);
+//		FloydWarschall fw = new FloydWarshall(matriz, numeroVertices, matriz[0][0]);
 //		long tiempoFinal = System.currentTimeMillis();
 //		long tiempo  = tiempoFinal-tiempoInicial;
 //		int[] camino = fw.getCamino();
