@@ -38,7 +38,7 @@ public class Dijkstra {
 			costo[i] = (int) Double.POSITIVE_INFINITY;
 		}
 		//El costo para llegar al primer vertice es 0
-		costo[0] = 0;
+		costo[fuente] = 0;
 
 		pq = new ColaDePrioridadOrientadaMinimo(pNumeroVertices);
 		//inserto el primer nodo a la cola orientada a minimo

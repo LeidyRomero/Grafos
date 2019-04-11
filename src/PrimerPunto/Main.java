@@ -15,14 +15,14 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 		try {
-
+			//crear la matriz a partir del archivo:
 			BufferedReader bf = new BufferedReader(new FileReader(PEQUENIO));
 			String linea = bf.readLine();
 			int cont = 0;
 			int j = 0;
 			String[] datos = null;
 			matriz = null;
-			
+
 			if(linea != null)
 			{
 				datos = linea.split("	");
@@ -46,6 +46,17 @@ public class Main {
 		} catch (FileNotFoundException e) {
 			System.err.println("Errores leyendo la matriz");
 		}
+		//algoritmos:
+		imprimirDijkstra();
+		imprimirBellmanFord();
+		imprimirFloyd();
+
+	}
+	/**
+	 * 
+	 */
+	public static void imprimirDijkstra()
+	{
 		//TODO calcular caminos desde todos los vertices fuente, a todos los vertices destino
 		long tiempoInicial = System.currentTimeMillis();
 		Dijkstra d = new Dijkstra(matriz, matriz[0].length, matriz[0][0]);
@@ -53,7 +64,7 @@ public class Main {
 		long tiempo  = tiempoFinal-tiempoInicial;
 		int[] camino = d.getCamino();
 		int[] costos = d.getCosto();
-		
+
 		System.out.println("Caminos: ");
 		for(int k = 0;k<camino.length;k++)
 		{
@@ -65,5 +76,55 @@ public class Main {
 			System.out.println(h+": "+costos[h]);
 		}
 		System.out.println("Tiempo Dijkstra: "+ tiempo);
+	}
+	/**
+	 * 
+	 */
+	public static void imprimirBellmanFord()
+	{
+		//TODO calcular caminos desde todos los vertices fuente, a todos los vertices destino
+		long tiempoInicial = System.currentTimeMillis();
+		BellmanFord bf = new BellmanFord(matriz, matriz[0].length, matriz[0][0]);
+		long tiempoFinal = System.currentTimeMillis();
+		long tiempo  = tiempoFinal-tiempoInicial;
+		int[] camino = bf.getCamino();
+		int[] costos = bf.getCosto();
+
+		System.out.println("Caminos: ");
+		for(int k = 0;k<camino.length;k++)
+		{
+			System.out.println(k+": "+camino[k]);
+		}
+		System.out.println("Costos: ");
+		for(int h = 0;h<costos.length;h++)
+		{
+			System.out.println(h+": "+costos[h]);
+		}
+		System.out.println("Tiempo Bellman Ford: "+ tiempo);
+	}
+	/**
+	 * 
+	 */
+	public static void imprimirFloyd()
+	{
+		//TODO calcular caminos desde todos los vertices fuente, a todos los vertices destino
+//		long tiempoInicial = System.currentTimeMillis();
+//		FloydWarschall fw = new FloydWarshall(matriz, matriz[0].length, matriz[0][0]);
+//		long tiempoFinal = System.currentTimeMillis();
+//		long tiempo  = tiempoFinal-tiempoInicial;
+//		int[] camino = fw.getCamino();
+//		int[] costos = fw.getCosto();
+//
+//		System.out.println("Caminos: ");
+//		for(int k = 0;k<camino.length;k++)
+//		{
+//			System.out.println(k+": "+camino[k]);
+//		}
+//		System.out.println("Costos: ");
+//		for(int h = 0;h<costos.length;h++)
+//		{
+//			System.out.println(h+": "+costos[h]);
+//		}
+//		System.out.println("Tiempo Floyd Warschall: "+ tiempo);
 	}
 }
