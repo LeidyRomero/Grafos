@@ -26,11 +26,12 @@ public class BellmanFord {
 		}
 		//El costo para llegar al primer vertice es 0
 		costo[fuente] = 0;
-
-		//TODO importante: en las diapositivas hay un minimo, preguntar!
+		
 		int j = 0;
 		int k = fuente;//TODO revisar que pasa cuando el vertice fuente no es 0
-		while(k<pNumeroVertices-1)
+		int i = k;
+		
+		while(i<pNumeroVertices-1)
 		{
 			if(matriz[k][j]>0)
 			{

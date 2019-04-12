@@ -18,7 +18,12 @@ public class Main {
 	private static int[][] matriz;
 
 	public static void main(String[] args) throws IOException {
-		menuPrincipal();
+		for(int i = 0;i<args.length;i++)
+		{
+			//TODO revisar
+			System.out.println(args[i]);
+		}
+		//menuPrincipal();
 	}
 	public static void selector(int option, Scanner sc) throws IOException
 	{

@@ -19,24 +19,31 @@ public class primerPunto {
 	public static void imprimirDijkstra(int[][] matriz, int numeroVertices)
 	{
 		//TODO calcular caminos desde todos los vertices fuente, a todos los vertices destino
-		long tiempoInicial = System.currentTimeMillis();
-		Dijkstra d = new Dijkstra(matriz, numeroVertices, matriz[0][0]);
-		long tiempoFinal = System.currentTimeMillis();
-		long tiempo  = tiempoFinal-tiempoInicial;
-		int[] camino = d.getCamino();
-		int[] costos = d.getCosto();
+		long tiempoInicial = 0;
+		long tiempoFinal = 0;
+		long tiempo = 0;
+		for(int i = 0;i<numeroVertices;i++)
+		{//TODO revisar que i si sea fuente
+			tiempoInicial = System.currentTimeMillis();
+			Dijkstra d = new Dijkstra(matriz, numeroVertices, i);
+			tiempoFinal = System.currentTimeMillis();
+			tiempo  = tiempoFinal-tiempoInicial;
+			System.out.println("Tiempo Dijkstra: "+ tiempo);
+			
+			int[] camino = d.getCamino();
+			int[] costos = d.getCosto();
 
-		System.out.println("Caminos: ");
-		for(int k = 0;k<camino.length;k++)
-		{
-			System.out.println(k+": "+camino[k]);
+			System.out.println("Caminos iniciando en el vertice: "+ i);
+			for(int k = 0;k<camino.length;k++)
+			{
+				System.out.println(k+": "+camino[k]);
+			}
+			System.out.println("Costos iniciando en el vertice: "+i);
+			for(int h = 0;h<costos.length;h++)
+			{
+				System.out.println(h+": "+costos[h]);
+			}
 		}
-		System.out.println("Costos: ");
-		for(int h = 0;h<costos.length;h++)
-		{
-			System.out.println(h+": "+costos[h]);
-		}
-		System.out.println("Tiempo Dijkstra: "+ tiempo);
 	}
 	/**
 	 * 
