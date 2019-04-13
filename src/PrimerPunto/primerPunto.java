@@ -18,7 +18,6 @@ public class primerPunto {
 	 */
 	public static void imprimirDijkstra(int[][] matriz, int numeroVertices)
 	{
-		//TODO calcular caminos desde todos los vertices fuente, a todos los vertices destino
 		long tiempoInicial = 0;
 		long tiempoFinal = 0;
 		long tiempo = 0;
@@ -65,49 +64,88 @@ public class primerPunto {
 	 */
 	public static void imprimirBellmanFord(int[][] matriz, int numeroVertices)
 	{
-		//TODO calcular caminos desde todos los vertices fuente, a todos los vertices destino
-		long tiempoInicial = System.currentTimeMillis();
-		BellmanFord bf = new BellmanFord(matriz, numeroVertices, matriz[0][0]);
-		long tiempoFinal = System.currentTimeMillis();
-		long tiempo  = tiempoFinal-tiempoInicial;
-		int[] camino = bf.getCamino();
-		int[] costos = bf.getCosto();
+		long tiempoInicial = 0;
+		long tiempoFinal = 0;
+		long tiempo = 0;
+		for(int i = 0;i<numeroVertices;i++)
+		{//TODO revisar que i si sea fuente
+			tiempoInicial = System.currentTimeMillis();
+			BellmanFord d = new BellmanFord(matriz, numeroVertices, i);
+			tiempoFinal = System.currentTimeMillis();
+			tiempo  = tiempoFinal-tiempoInicial;
+			System.out.println("\nTiempo Bellman Ford: "+ tiempo);
 
-		System.out.println("Caminos: ");
-		for(int k = 0;k<camino.length;k++)
-		{
-			System.out.println(k+": "+camino[k]);
+			int[] camino = d.getCamino();
+			int[] costos = d.getCosto();
+
+			System.out.println("Caminos iniciando en el vertice: "+ i);
+			for(int k = 0;k<camino.length;k++)
+			{
+				if(k==camino.length-1)
+				{
+					System.out.print(k+":"+camino[k]);
+				}
+				else
+				{
+					System.out.print(k+":"+camino[k]+", ");
+				}
+			}
+			System.out.println("\nCostos iniciando en el vertice: "+i);
+			for(int h = 0;h<costos.length;h++)
+			{
+				if(h!=camino.length-1)
+				{
+					System.out.print(h+":"+costos[h]+", ");
+				}
+				else
+				{
+					System.out.print(h+":"+costos[h]);
+				}
+
+			}
 		}
-		System.out.println("Costos: ");
-		for(int h = 0;h<costos.length;h++)
-		{
-			System.out.println(h+": "+costos[h]);
-		}
-		System.out.println("Tiempo Bellman Ford: "+ tiempo);
 	}
 	/**
 	 * 
 	 */
 	public static void imprimirFloyd(int[][] matriz, int numeroVertices)
 	{
-		//TODO calcular caminos desde todos los vertices fuente, a todos los vertices destino
-		//		long tiempoInicial = System.currentTimeMillis();
-		//		FloydWarschall fw = new FloydWarshall(matriz, numeroVertices, matriz[0][0]);
-		//		long tiempoFinal = System.currentTimeMillis();
-		//		long tiempo  = tiempoFinal-tiempoInicial;
-		//		int[] camino = fw.getCamino();
-		//		int[] costos = fw.getCosto();
-		//
-		//		System.out.println("Caminos: ");
-		//		for(int k = 0;k<camino.length;k++)
-		//		{
-		//			System.out.println(k+": "+camino[k]);
-		//		}
-		//		System.out.println("Costos: ");
-		//		for(int h = 0;h<costos.length;h++)
-		//		{
-		//			System.out.println(h+": "+costos[h]);
-		//		}
-		//		System.out.println("Tiempo Floyd Warschall: "+ tiempo);
+		long tiempoInicial = 0;
+		long tiempoFinal = 0;
+		long tiempo = 0;
+		tiempoInicial = System.currentTimeMillis();
+		FloydWarschall d = new FloydWarschall(matriz, numeroVertices);
+		tiempoFinal = System.currentTimeMillis();
+		tiempo  = tiempoFinal-tiempoInicial;
+		System.out.println("\nTiempo Dijkstra: "+ tiempo);
+
+		int[][] camino = d.getCaminos();
+		int[][] costos = d.getCostos();
+
+		System.out.println("Caminos: ");
+		for(int k = 0;k<camino.length;k++)
+		{
+			if(k==camino.length-1)
+			{
+				System.out.print(k+":"+camino[k]);
+			}
+			else
+			{
+				System.out.print(k+":"+camino[k]+", ");
+			}
+		}
+		System.out.println("\nCostos: ");
+		for(int h = 0;h<costos.length;h++)
+		{
+			if(h!=camino.length-1)
+			{
+				System.out.print(h+":"+costos[h]+", ");
+			}
+			else
+			{
+				System.out.print(h+":"+costos[h]);
+			}
+
+		}
 	}
 }

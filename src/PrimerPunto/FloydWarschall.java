@@ -11,10 +11,22 @@ public class FloydWarschall {
 	//TODO importante programacion dinamica con un cubo???? wtf
 	private int[][][] matrizCubica;
 	private int[][] predecesores;
+	private int [][] ultimaMatriz;
 	
-	public FloydWarschall(int numeroVertices, int[][] matriz)
+	public int[][][] getMatrizCubica() {
+		return matrizCubica;
+	}
+	public int[][] getCostos() {
+		return ultimaMatriz;
+	}
+	public int[][] getCaminos() {
+		return predecesores;
+	}
+
+	public FloydWarschall(int[][] matriz,int numeroVertices)
 	{
-		int  j = 0;
+		matrizCubica = new int[numeroVertices][numeroVertices][numeroVertices];
+		int j = 0;
 		int i = 0;
 		int k = 0;
 		//Caso base
@@ -22,7 +34,7 @@ public class FloydWarschall {
 		{
 			matrizCubica[0][i][j] = matriz[i][j];
 
-			if(j<numeroVertices)
+			if(j<numeroVertices-1)
 				j++;
 			else
 			{
@@ -33,7 +45,7 @@ public class FloydWarschall {
 
 		j = 0;
 		i = 0;
-		while(k<numeroVertices+1)
+		while(k<numeroVertices+1&&k>0)
 		{
 			int aux1 = matrizCubica[k-1][i][j];
 			int aux2 = matrizCubica[k-1][i][k]+matrizCubica[k-1][k][j];
@@ -67,6 +79,26 @@ public class FloydWarschall {
 				i = 0;
 				j = 0;
 				k++;
+			}
+		}
+		llenarUltimaMatriz(numeroVertices);
+	}
+	public void llenarUltimaMatriz(int numeroVertices)
+	{
+		ultimaMatriz = new int[numeroVertices][numeroVertices];
+		int i = 0;
+		int j = 0;
+		while(i<numeroVertices-1)
+		{
+			ultimaMatriz[i][j] = matrizCubica[numeroVertices-1][i][j];
+			if(j<numeroVertices-1)
+			{
+				j++;
+			}
+			else
+			{
+				j = 0;
+				i++;
 			}
 		}
 	}

@@ -26,19 +26,24 @@ public class BellmanFord {
 		}
 		//El costo para llegar al primer vertice es 0
 		costo[fuente] = 0;
-		
+
 		int j = 0;
 		int k = fuente;//TODO revisar que pasa cuando el vertice fuente no es 0
-		int i = k;
+		int i = 1;
 		
-		while(i<pNumeroVertices-1)
+		while(i<pNumeroVertices-1&&k<pNumeroVertices)
 		{
 			if(matriz[k][j]>0)
 			{
-				if(costo[j]>matriz[k][j])
+				if(costo[j]>matriz[k][j]&&costo[j]!=Double.POSITIVE_INFINITY)
+				{
+					costo[j] = costo[j] + matriz[k][j];
+					camino[j] = k;//TODO revisar orden de j y k
+				}
+				else
 				{
 					costo[j] = matriz[k][j];
-					camino[j] = k;//TODO revisar orden de j y k
+					camino[j] = k;
 				}
 				if(j<pNumeroVertices-1) j++;
 				else
@@ -46,6 +51,16 @@ public class BellmanFord {
 					k++;
 					j = 0;
 				}
+			}
+			else if(j<pNumeroVertices-1)
+			{
+				j++;
+			}
+			else if(j==pNumeroVertices-1)
+			{
+				i++;
+				k++;
+				j=0;
 			}
 		}
 	}
