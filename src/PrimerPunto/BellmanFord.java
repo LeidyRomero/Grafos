@@ -14,6 +14,7 @@ public class BellmanFord {
 	 * y el valor del arreglo en esa posicion es el costo de llegar a el
 	 */
 	private int[] costo;
+	
 	public BellmanFord(int[][] matriz, int pNumeroVertices, int fuente)
 	{
 		camino = new int[pNumeroVertices];
@@ -31,7 +32,7 @@ public class BellmanFord {
 		int k = fuente;//TODO revisar que pasa cuando el vertice fuente no es 0
 		int i = 1;
 		
-		while(i<pNumeroVertices-1&&k<pNumeroVertices)
+		while( i<pNumeroVertices-1 && k<pNumeroVertices )
 		{
 			if(matriz[k][j]>0)
 			{

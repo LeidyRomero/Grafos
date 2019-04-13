@@ -26,6 +26,7 @@ public class FloydWarschall {
 	public FloydWarschall(int[][] matriz,int numeroVertices)
 	{
 		matrizCubica = new int[numeroVertices][numeroVertices][numeroVertices];
+		predecesores = new int[numeroVertices][numeroVertices];
 		int j = 0;
 		int i = 0;
 		int k = 0;

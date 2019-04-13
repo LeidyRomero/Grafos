@@ -117,21 +117,32 @@ public class primerPunto {
 		FloydWarschall d = new FloydWarschall(matriz, numeroVertices);
 		tiempoFinal = System.currentTimeMillis();
 		tiempo  = tiempoFinal-tiempoInicial;
-		System.out.println("\nTiempo Dijkstra: "+ tiempo);
+		System.out.println("\nTiempo Floyd Warschall: "+ tiempo);
 
 		int[][] camino = d.getCaminos();
 		int[][] costos = d.getCostos();
 
 		System.out.println("Caminos: ");
-		for(int k = 0;k<camino.length;k++)
+		int i = 0;
+		int k = 0;
+		while(k<camino.length)
 		{
 			if(k==camino.length-1)
 			{
-				System.out.print(k+":"+camino[k]);
+				System.out.print(k+":"+camino[k][i]);
 			}
 			else
 			{
-				System.out.print(k+":"+camino[k]+", ");
+				System.out.print(k+":"+camino[k][i]+", ");
+			}
+			if(i<camino[0].length)
+			{
+				i++;
+			}
+			else
+			{
+				i = 0;
+				k++;
 			}
 		}
 		System.out.println("\nCostos: ");
