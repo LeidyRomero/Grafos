@@ -28,20 +28,35 @@ public class primerPunto {
 			Dijkstra d = new Dijkstra(matriz, numeroVertices, i);
 			tiempoFinal = System.currentTimeMillis();
 			tiempo  = tiempoFinal-tiempoInicial;
-			System.out.println("Tiempo Dijkstra: "+ tiempo);
-			
+			System.out.println("\nTiempo Dijkstra: "+ tiempo);
+
 			int[] camino = d.getCamino();
 			int[] costos = d.getCosto();
 
 			System.out.println("Caminos iniciando en el vertice: "+ i);
 			for(int k = 0;k<camino.length;k++)
 			{
-				System.out.println(k+": "+camino[k]);
+				if(k==camino.length-1)
+				{
+					System.out.print(k+":"+camino[k]);
+				}
+				else
+				{
+					System.out.print(k+":"+camino[k]+", ");
+				}
 			}
-			System.out.println("Costos iniciando en el vertice: "+i);
+			System.out.println("\nCostos iniciando en el vertice: "+i);
 			for(int h = 0;h<costos.length;h++)
 			{
-				System.out.println(h+": "+costos[h]);
+				if(h!=camino.length-1)
+				{
+					System.out.print(h+":"+costos[h]+", ");
+				}
+				else
+				{
+					System.out.print(h+":"+costos[h]);
+				}
+
 			}
 		}
 	}
@@ -76,23 +91,23 @@ public class primerPunto {
 	public static void imprimirFloyd(int[][] matriz, int numeroVertices)
 	{
 		//TODO calcular caminos desde todos los vertices fuente, a todos los vertices destino
-//		long tiempoInicial = System.currentTimeMillis();
-//		FloydWarschall fw = new FloydWarshall(matriz, numeroVertices, matriz[0][0]);
-//		long tiempoFinal = System.currentTimeMillis();
-//		long tiempo  = tiempoFinal-tiempoInicial;
-//		int[] camino = fw.getCamino();
-//		int[] costos = fw.getCosto();
-//
-//		System.out.println("Caminos: ");
-//		for(int k = 0;k<camino.length;k++)
-//		{
-//			System.out.println(k+": "+camino[k]);
-//		}
-//		System.out.println("Costos: ");
-//		for(int h = 0;h<costos.length;h++)
-//		{
-//			System.out.println(h+": "+costos[h]);
-//		}
-//		System.out.println("Tiempo Floyd Warschall: "+ tiempo);
+		//		long tiempoInicial = System.currentTimeMillis();
+		//		FloydWarschall fw = new FloydWarshall(matriz, numeroVertices, matriz[0][0]);
+		//		long tiempoFinal = System.currentTimeMillis();
+		//		long tiempo  = tiempoFinal-tiempoInicial;
+		//		int[] camino = fw.getCamino();
+		//		int[] costos = fw.getCosto();
+		//
+		//		System.out.println("Caminos: ");
+		//		for(int k = 0;k<camino.length;k++)
+		//		{
+		//			System.out.println(k+": "+camino[k]);
+		//		}
+		//		System.out.println("Costos: ");
+		//		for(int h = 0;h<costos.length;h++)
+		//		{
+		//			System.out.println(h+": "+costos[h]);
+		//		}
+		//		System.out.println("Tiempo Floyd Warschall: "+ tiempo);
 	}
 }
