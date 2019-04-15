@@ -36,16 +36,23 @@ public class BellmanFord {
 		{
 			if(matriz[k][j]>0)
 			{
-				if(costo[j]>matriz[k][j]&&costo[j]!=Double.POSITIVE_INFINITY)
+				
+				if(costo[j]> costo[k]+matriz[k][j])
 				{
-					costo[j] = costo[j] + matriz[k][j];
-					camino[j] = k;//TODO revisar orden de j y k
-				}
-				else
-				{
-					costo[j] = matriz[k][j];
+					costo[j] = costo[k]+matriz[k][j];
 					camino[j] = k;
 				}
+				// Si el costo de llegar a j es mayor que el arco de k a j 
+//				if(costo[j]>matriz[k][j]&&costo[j]!=Double.POSITIVE_INFINITY)
+//				{
+//					costo[j] = costo[j] + matriz[k][j];
+//					camino[j] = k;//TODO revisar orden de j y k
+//				}
+//				else
+//				{
+//					costo[j] = matriz[k][j];
+//					camino[j] = k;
+//				}
 				if(j<pNumeroVertices-1) j++;
 				else
 				{

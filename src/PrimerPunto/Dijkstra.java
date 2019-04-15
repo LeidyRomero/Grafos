@@ -62,8 +62,10 @@ public class Dijkstra {
 	 * @param destino vertice destino
 	 */
 	private void actualizar(int[][] matriz, int origen, int destino) {
-		//Si el costo para llegar al destino es mayor que el costo para llegar al origen más el costo "actual", actualizo el costo y el camino
-		if (costo[destino] > costo[origen] + matriz[origen][destino]) {
+		//Si el costo para llegar al destino es mayor que el costo 
+		//para llegar al origen más el costo "actual", actualizo el costo y el camino
+		if (costo[destino] > costo[origen] + matriz[origen][destino]) 
+		{
 			costo[destino] = costo[origen] + matriz[origen][destino];
 			camino[destino] = origen;
 			if (pq.contains(destino)) pq.decreaseV(destino, costo[destino]);
@@ -84,5 +86,5 @@ public class Dijkstra {
 	public int[] getCosto() {
 		return costo;
 	}
-	
+
 }

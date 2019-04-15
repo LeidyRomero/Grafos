@@ -129,13 +129,15 @@ public class primerPunto {
 		{
 			if(k==camino.length-1)
 			{
+				
 				System.out.print(k+":"+camino[k][i]);
 			}
 			else
 			{
+				
 				System.out.print(k+":"+camino[k][i]+", ");
 			}
-			if(i<camino[0].length)
+			if(i+1<camino[0].length)
 			{
 				i++;
 			}
@@ -150,11 +152,11 @@ public class primerPunto {
 		{
 			if(h!=camino.length-1)
 			{
-				System.out.print(h+":"+costos[h]+", ");
+				System.out.print(h+":"+costos[h][h]+", ");
 			}
 			else
 			{
-				System.out.print(h+":"+costos[h]);
+				System.out.print(h+":"+costos[h][h]);
 			}
 
 		}

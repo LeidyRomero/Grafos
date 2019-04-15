@@ -19,8 +19,8 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 
-		int random = (int) (Math.random()*args.length);
-		cargarMatriz(args[random]);
+		System.out.println(args[0]);
+		cargarMatriz(args[0]);
 		primerPunto uno = new primerPunto(matriz, matriz[0].length);
 		segundoPunto dos = new segundoPunto(matriz, matriz[0].length);
 		tercerPunto tres = new tercerPunto(matriz, matriz[0].length);

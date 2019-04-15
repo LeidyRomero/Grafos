@@ -46,9 +46,11 @@ public class FloydWarschall {
 
 		j = 0;
 		i = 0;
-		while(k<numeroVertices+1&&k>0)
+		k=1;
+		while(k<numeroVertices&&k>0)
 		{
 			int aux1 = matrizCubica[k-1][i][j];
+			System.out.println(k);
 			int aux2 = matrizCubica[k-1][i][k]+matrizCubica[k-1][k][j];
 			if(aux1<aux2)
 			{
@@ -62,10 +64,10 @@ public class FloydWarschall {
 				//predecesores[i][j] = matriz[i][j];
 			}
 
-			if(j<numeroVertices && i<numeroVertices)
+			if(j+1<numeroVertices && i+1<numeroVertices)
 			{
 				//recorro columnas
-				if(j<numeroVertices)	
+				if(j+1<numeroVertices)	
 					j++;
 				else
 				{
