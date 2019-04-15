@@ -14,23 +14,31 @@ public class Main {
 	public final static String PEQUENIO = "./data/distances5.txt";
 	public final static String MEDIO = "./data/distances100.txt";
 	public final static String GRANDE = "./data/distances1000.txt";
+	public final static String PRUEBA = "./data/pruebaBFS.txt";
 
 	private static int[][] matriz;
 
 	public static void main(String[] args) throws IOException {
 
 		System.out.println(args[0]);
-		cargarMatriz(args[0]);
+		try {
+			cargarMatriz(args[0]);
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
 		primerPunto uno = new primerPunto(matriz, matriz[0].length);
 		segundoPunto dos = new segundoPunto(matriz, matriz[0].length);
 		tercerPunto tres = new tercerPunto(matriz, matriz[0].length);
 	}
-	public static void cargarMatriz(String archivo) throws IOException
+	public static void cargarMatriz(String archivo) throws Exception
 	{
 		String cargar = "";
 		if (archivo.equals("PEQUENIO")) cargar = PEQUENIO;
 		else if(archivo.equals("MEDIANO")) cargar = MEDIO;
-		else cargar = GRANDE;
+		else if (archivo.equals("GRANDE")) cargar = GRANDE;
+		else if (archivo.equals("PRUEBA")) cargar = PRUEBA;
+		else throw new Exception("El argumento que escrito no es válido");
 
 		try {
 			//crear la matriz a partir del archivo:
@@ -50,7 +58,7 @@ public class Main {
 
 			while(linea != null)
 			{
-				matriz[cont][j] = Integer.parseInt(datos[j]);
+				matriz[cont][j] = Integer.parseInt(datos[j].replace(" ", ""));
 				if(j<datos.length-1) 
 				{ j++; }
 				else

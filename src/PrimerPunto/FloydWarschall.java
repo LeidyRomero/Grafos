@@ -33,8 +33,10 @@ public class FloydWarschall {
 		//Caso base
 		while(i<numeroVertices)
 		{
-			matrizCubica[0][i][j] = matriz[i][j];
-
+			if(matriz[i][j]>=0)
+				matrizCubica[0][i][j] = matriz[i][j];
+			else
+				matrizCubica[0][i][j] = 1000;
 			if(j<numeroVertices-1)
 				j++;
 			else
@@ -43,15 +45,15 @@ public class FloydWarschall {
 				i++;
 			}
 		}
-
+		
 		j = 0;
 		i = 0;
 		k=1;
 		while(k<numeroVertices&&k>0)
 		{
 			int aux1 = matrizCubica[k-1][i][j];
-			System.out.println(k);
-			int aux2 = matrizCubica[k-1][i][k]+matrizCubica[k-1][k][j];
+//			System.out.println(k +" "+i + " "+ j);
+			int aux2 = matrizCubica[k-1][i][k] + matrizCubica[k-1][k][j];
 			if(aux1<aux2)
 			{
 				//TODO cargar predecesores
@@ -64,7 +66,7 @@ public class FloydWarschall {
 				//predecesores[i][j] = matriz[i][j];
 			}
 
-			if(j+1<numeroVertices && i+1<numeroVertices)
+			if(j+1<numeroVertices || i+1<numeroVertices)
 			{
 				//recorro columnas
 				if(j+1<numeroVertices)	
@@ -78,6 +80,7 @@ public class FloydWarschall {
 			}
 			else
 			{
+				
 				//avanzo pagina, reinicio filas y columnas
 				i = 0;
 				j = 0;
@@ -91,10 +94,11 @@ public class FloydWarschall {
 		ultimaMatriz = new int[numeroVertices][numeroVertices];
 		int i = 0;
 		int j = 0;
-		while(i<numeroVertices-1)
+		while(i<numeroVertices)
 		{
+//			System.out.println(numeroVertices-1);
 			ultimaMatriz[i][j] = matrizCubica[numeroVertices-1][i][j];
-			if(j<numeroVertices-1)
+			if(j+1<numeroVertices)
 			{
 				j++;
 			}

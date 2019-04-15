@@ -147,16 +147,13 @@ public class primerPunto {
 				k++;
 			}
 		}
-		System.out.println("\nCostos: ");
+		
 		for(int h = 0;h<costos.length;h++)
 		{
-			if(h!=camino.length-1)
+			System.out.println("\nCostos desde el nodo "+h+": ");
+			for(int q = 0; q< numeroVertices; q++)
 			{
-				System.out.print(h+":"+costos[h][h]+", ");
-			}
-			else
-			{
-				System.out.print(h+":"+costos[h][h]);
+				System.out.print(costos[h][q]+ " ");
 			}
 
 		}
