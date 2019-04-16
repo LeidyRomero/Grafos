@@ -20,7 +20,7 @@ public class BFS {
 		marcados[fuente] = true;
 		int j = 0;
 		//TODO revisar
-		System.out.println("\n entré a BFS");
+		System.out.println("\n-------------------BFS-------------------");
 		System.out.print("{");
 		ArrayList<Integer> grupoActual = new ArrayList<>(numeroVertices);
 		while(!cola.isEmpty() )

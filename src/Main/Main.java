@@ -20,9 +20,8 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 
-		System.out.println(args[0]);
 		try {
-			cargarMatriz(args[0]);
+			cargarMatriz(args[(int) Math.random()*args.length]);
 		} catch (Exception e) {
 			
 			e.printStackTrace();

@@ -9,8 +9,11 @@ public class primerPunto {
 
 	public primerPunto(int[][] matriz, int numeroVertices) throws IOException {
 		//algoritmos:
+		System.out.println("--------------------Dijkstra----------------------");
 		imprimirDijkstra(matriz, numeroVertices);
+		System.out.println("\n--------------------Bellman Ford----------------------");
 		imprimirBellmanFord(matriz, numeroVertices);
+		System.out.println("\n--------------------Floyd Warschall----------------------");
 		imprimirFloyd(matriz, numeroVertices);
 	}
 	/**
@@ -27,7 +30,10 @@ public class primerPunto {
 			Dijkstra d = new Dijkstra(matriz, numeroVertices, i);
 			tiempoFinal = System.currentTimeMillis();
 			tiempo  = tiempoFinal-tiempoInicial;
-			System.out.println("\nTiempo Dijkstra: "+ tiempo);
+			if(i == 0)
+				System.out.println("Tiempo Dijkstra: "+ tiempo);
+			else
+				System.out.println("\nTiempo Dijkstra: "+ tiempo);
 
 			int[] camino = d.getCamino();
 			int[] costos = d.getCosto();
@@ -73,7 +79,10 @@ public class primerPunto {
 			BellmanFord d = new BellmanFord(matriz, numeroVertices, i);
 			tiempoFinal = System.currentTimeMillis();
 			tiempo  = tiempoFinal-tiempoInicial;
-			System.out.println("\nTiempo Bellman Ford: "+ tiempo);
+			if(i == 0)
+				System.out.println("Tiempo Bellman Ford: "+ tiempo);
+			else
+				System.out.println("\nTiempo Bellman Ford: "+ tiempo);
 
 			int[] camino = d.getCamino();
 			int[] costos = d.getCosto();
@@ -117,7 +126,9 @@ public class primerPunto {
 		FloydWarschall d = new FloydWarschall(matriz, numeroVertices);
 		tiempoFinal = System.currentTimeMillis();
 		tiempo  = tiempoFinal-tiempoInicial;
-		System.out.println("\nTiempo Floyd Warschall: "+ tiempo);
+
+		System.out.println("Tiempo Floyd Warschall: "+ tiempo);
+
 
 		int[][] camino = d.getCaminos();
 		int[][] costos = d.getCostos();
@@ -129,12 +140,12 @@ public class primerPunto {
 		{
 			if(k==camino.length-1)
 			{
-				
-				System.out.print(k+":"+camino[k][i]);
+
+				System.out.print(k+":"+camino[k][i]+", ");
 			}
 			else
 			{
-				
+
 				System.out.print(k+":"+camino[k][i]+", ");
 			}
 			if(i+1<camino[0].length)
@@ -147,10 +158,10 @@ public class primerPunto {
 				k++;
 			}
 		}
-		
+
 		for(int h = 0;h<costos.length;h++)
 		{
-			System.out.println("\nCostos desde el nodo "+h+": ");
+			System.out.println("\nCostos iniciando en el vertice: "+h);
 			for(int q = 0; q< numeroVertices; q++)
 			{
 				System.out.print(costos[h][q]+ " ");
