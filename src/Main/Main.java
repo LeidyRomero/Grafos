@@ -58,7 +58,8 @@ public class Main {
 
 			while(linea != null)
 			{
-				matriz[cont][j] = Integer.parseInt(datos[j].replace(" ", ""));
+//				System.out.println(datos[j].replace(" ", "_"));
+				matriz[cont][j] = Integer.parseInt(datos[j]);
 				if(j<datos.length-1) 
 				{ j++; }
 				else
@@ -70,6 +71,15 @@ public class Main {
 						datos = linea.split("	");
 				}
 			}
+//			for(int h = 0;h<datos.length;h++)
+//			{
+//				System.out.println("\nCostos desde el nodo "+h+": ");
+//				for(int q = 0; q< datos.length; q++)
+//				{
+//					System.out.print(matriz[h][q]+ " ");
+//				}
+//
+//			}
 		} catch (FileNotFoundException e) {
 			System.err.println("Errores leyendo la matriz");
 		}

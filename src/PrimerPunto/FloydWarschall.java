@@ -33,7 +33,7 @@ public class FloydWarschall {
 		//Caso base
 		while(i<numeroVertices)
 		{
-			if(matriz[i][j]>=0)
+			if(matriz[i][j] >=0)
 				matrizCubica[0][i][j] = matriz[i][j];
 			else
 				matrizCubica[0][i][j] = 1000;
