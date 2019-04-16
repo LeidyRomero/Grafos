@@ -1,10 +1,11 @@
 package TercerPunto;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
 public class tercerPunto {
 
-	private Iterable<Integer> order; // topological order
+	private ArrayList<Integer> order; // topological order
 	public tercerPunto(int[][] matriz, int numeroVertices)
 	{
 		DirectedCycle cyclefinder = new DirectedCycle(matriz, numeroVertices);
@@ -12,11 +13,9 @@ public class tercerPunto {
 		{
 			DepthFirstOrder dfs = new DepthFirstOrder(matriz, numeroVertices);
 			order = dfs.reversePost();
-			Iterator<Integer> iterator = order.iterator();
-			while(iterator.hasNext())
+			for (int i = 0; i < order.size(); i++) 
 			{
-				Integer i = iterator.next();
-				System.out.println(i);
+				System.out.println(order.get(i));
 			}
 		}
 	}

@@ -59,7 +59,7 @@ public class Main {
 			while(linea != null)
 			{
 //				System.out.println(datos[j].replace(" ", "_"));
-				matriz[cont][j] = Integer.parseInt(datos[j]);
+				matriz[cont][j] = Integer.parseInt(datos[j].replace(" ", ""));
 				if(j<datos.length-1) 
 				{ j++; }
 				else
