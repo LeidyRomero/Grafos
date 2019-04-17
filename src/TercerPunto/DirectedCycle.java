@@ -21,28 +21,23 @@ public class DirectedCycle {
 
 	private void dfs(int[][] matriz, int fuente, int numeroVertices)
 	{
-		System.out.println("empieza dfs, fuente: "+ fuente);
 		enStack[fuente] = true;
 		marcados[fuente] = true;
 		for (int w = 0;w<numeroVertices ;w++)
 		{
 			if(matriz[fuente][w]>0)
 			{ 	
-				System.out.println("revisa adyacentes: fuente:"+fuente+"w: "+w);
 				if (this.hasCycle()) 
 				{ 
-					System.out.println("retorno null");
 					return;
 				}
 				else if (!marcados[w])
 				{ 
-					System.out.println("origen: "+fuente+", destino:"+w);
 					edgeTo[w] = fuente; 
 					dfs(matriz, w, numeroVertices); 
 				}
 				else if (enStack[w])
 				{
-					System.out.println("encontro ciclo");
 					cycle = new ArrayList<>();
 					for (int x = fuente; x != w; x = edgeTo[x])
 						cycle.add(0, x);
@@ -51,7 +46,7 @@ public class DirectedCycle {
 				}
 				else
 				{
-					System.out.println("entra al else");	
+					//TODO revisar	
 				}
 			}
 		}

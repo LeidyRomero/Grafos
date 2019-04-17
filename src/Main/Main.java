@@ -20,8 +20,10 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 
-		try {
-			cargarMatriz(args[(int) Math.random()*args.length]);
+		try { 
+			double b = Math.random()*3;
+			int a = (int) b ;
+			cargarMatriz(args[a]);
 		} catch (Exception e) {
 			
 			e.printStackTrace();
@@ -34,7 +36,7 @@ public class Main {
 	{
 		String cargar = "";
 		if (archivo.equals("PEQUENIO")) cargar = PEQUENIO;
-		else if(archivo.equals("MEDIANO")) cargar = MEDIO;
+		else if(archivo.equals("MEDIO")) cargar = MEDIO;
 		else if (archivo.equals("GRANDE")) cargar = GRANDE;
 		else if (archivo.equals("PRUEBA")) cargar = PRUEBA;
 		else throw new Exception("El argumento que escrito no es válido");
